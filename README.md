@@ -2,9 +2,9 @@
 
  A light weight nodejs https library
 
- ## Usage
+## Usage
 
- '''
+```javascript
 const httpslite = require("./https-lite");
 
 (async () => {
@@ -15,4 +15,4 @@ const httpslite = require("./https-lite");
         console.log(e);
     }
 })();
- '''
+```
