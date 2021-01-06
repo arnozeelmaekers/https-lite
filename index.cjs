@@ -1,8 +1,9 @@
 const https = require('https');
 
-const Get = async (hostname, path, headers)=>{
+const Get = async (url, headers)=>{
     return new Promise((resolve, reject) =>{
-        const req = https.request({hostname: hostname, path: path, port: 443, method: "GET", headers: headers}, (res) =>{
+        const urlobject = new URL(url);
+        const req = https.request({hostname: urlobject.hostname, path: urlobject.pathname + urlobject.search, port: urlobject.port, method: "GET", headers: headers}, (res) =>{
             
             let responseBody = '';
 
@@ -23,9 +24,10 @@ const Get = async (hostname, path, headers)=>{
     });
 };
 
-const Post = async (hostname, path, headers, data)=>{
+const Post = async (url, headers, data)=>{
     return new Promise((resolve, reject) =>{
-        const req = https.request({hostname: hostname, path: path, port: 443, method: 'POST', headers: headers}, (res)=>{
+        const urlobject = new URL(url);
+        const req = https.request({hostname: urlobject.hostname, path: urlobject.pathname + urlobject.search, port: urlobject.port, method: 'POST', headers: headers}, (res)=>{
             let responseBody = '';
 
             res.on('data', (chunk) =>{
@@ -46,9 +48,10 @@ const Post = async (hostname, path, headers, data)=>{
     });
 };
 
-const Put = async (hostname, path, headers, data)=>{
+const Put = async (url, headers, data)=>{
     return new Promise((resolve, reject) =>{
-        const req = https.request({hostname: hostname, path: path, port: 443, method: 'PUT', headers: headers}, (res) =>{
+        const urlobject = new URL(url);
+        const req = https.request({hostname: urlobject.hostname, path: urlobject.pathname + urlobject.search, port: urlobject.port, method: 'PUT', headers: headers}, (res) =>{
             let responseBody = '';
 
             res.on('data', (chunk) =>{
@@ -69,9 +72,10 @@ const Put = async (hostname, path, headers, data)=>{
     });
 };
 
-const Delete = async (hostname, path, headers)=>{
+const Delete = async (url, headers)=>{
     return new Promise((resolve, reject) =>{
-        const req = https.request({hostname, hostname, path: path, port:443, method: 'DELETE', headers: headers}, (res)=>{
+        const urlobject = new URL(url);
+        const req = https.request({hostname: urlobject.hostname, path: urlobject.pathname + urlobject.search, port: urlobject.port, method: 'DELETE', headers: headers}, (res)=>{
             let responseBody = '';
 
             res.on('data', (chunk) =>{
