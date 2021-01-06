@@ -1,0 +1,9 @@
+{
+  "name": "https-lite",
+  "version": "1.0.0",
+  "description": "I just needed to do some https calls and wanted to use async await, so here you fucking go now you can do this to",
+  "main": "index.js",
+  "keywords": ["https","http","web", "request","get","post","put","delete","patch"],
+  "author": "Arno Zeelmaekers",
+  "license": "ISC"
+}
