@@ -3,6 +3,7 @@ const https = require('https');
 const Get = async (hostname, path, headers)=>{
     return new Promise((resolve, reject) =>{
         const req = https.request({hostname: hostname, path: path, port: 443, method: "GET", headers: headers}, (res) =>{
+            
             let responseBody = '';
 
             res.on('data', (chunk) =>{
@@ -10,7 +11,7 @@ const Get = async (hostname, path, headers)=>{
             });
 
             res.on('end', ()=>{
-                resolve(responseBody);
+                resolve({StatusCode: res.statusCode, Headers: res.headers ,Data: responseBody});
             });
         });
 
@@ -32,7 +33,7 @@ const Post = async (hostname, path, headers, data)=>{
             });
 
             res.on('end', ()=>{
-                resolve(responseBody);
+                resolve({StatusCode: res.statusCode, Headers: res.headers ,Data: responseBody});
             });
         });
 
@@ -55,7 +56,7 @@ const Put = async (hostname, path, headers, data)=>{
             });
 
             res.on('end', ()=>{
-                resolve(responseBody);
+                resolve({StatusCode: res.statusCode, Headers: res.headers ,Data: responseBody});
             });
         });
 
@@ -78,7 +79,7 @@ const Delete = async (hostname, path, headers)=>{
             });
 
             res.on('end', ()=>{
-                resolve(responseBody);
+                resolve({StatusCode: res.statusCode, Headers: res.headers ,Data: responseBody});
             });
         });
 
