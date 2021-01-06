@@ -9,7 +9,7 @@ const httpslite = require("./https-lite");
 
 (async () => {
     try{
-        var result = await httpslite.Get("example.com", "", {});
+        var result = await httpslite.Get("example.com", {});
         console.log(result);
     }catch(e){
         console.log(e);
